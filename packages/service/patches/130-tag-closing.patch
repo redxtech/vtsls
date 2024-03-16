@@ -1,0 +1,32 @@
+diff --git a/src/languageFeatures/tagClosing.ts b/src/languageFeatures/tagClosing.ts
+index 36c894e..24ba29e 100644
+--- a/src/languageFeatures/tagClosing.ts
++++ b/src/languageFeatures/tagClosing.ts
+@@ -110,18 +110,16 @@ class TagClosing extends Disposable {
+ 				return;
+ 			}
+ 
+-			const activeEditor = vscode.window.activeTextEditor;
+-			if (!activeEditor) {
+-				return;
+-			}
+-
+ 			const insertion = response.body;
+-			const activeDocument = activeEditor.document;
+-			if (document === activeDocument && activeDocument.version === version) {
+-				activeEditor.insertSnippet(
+-					this.getTagSnippet(insertion),
+-					this.getInsertionPositions(activeEditor, position));
+-			}
++			const edit = new vscode.WorkspaceEdit();
++			edit.set(
++				document.uri,
++				[{
++					range: new vscode.Range(position, position),
++					snippet: this.getTagSnippet(insertion),
++				}]
++			);
++			return await vscode.workspace.applyEdit(edit);
+ 		}, 100);
+ 	}
+ 
