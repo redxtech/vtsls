@@ -2,3 +2,5 @@ node_modules
 dist
 typescript-language-features
 .eslintcache
+.devenv
+.direnv
