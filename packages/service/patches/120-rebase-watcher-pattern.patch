@@ -1,5 +1,5 @@
 diff --git a/src/typescriptServiceClient.ts b/src/typescriptServiceClient.ts
-index 25dfca2..a235fb3 100644
+index ed11b14..45dc8a4 100644
 --- a/src/typescriptServiceClient.ts
 +++ b/src/typescriptServiceClient.ts
 @@ -944,6 +944,20 @@ export default class TypeScriptServiceClient extends Disposable implements IType
