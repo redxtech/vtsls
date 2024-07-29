@@ -2,3 +2,4 @@ node_modules
 dist
 typescript-language-features
 .eslintcache
+result
